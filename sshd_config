@@ -1,0 +1,46 @@
+#	$OpenBSD: sshd_config,v 1.103 2018/04/09 20:41:22 tj Exp $
+
+Port 22
+AuthenticationMethods publickey
+PubkeyAuthentication yes
+AuthorizedKeysFile	.ssh/authorized_keys
+
+#HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_ecdsa_key
+#HostKey /etc/ssh/ssh_host_ed25519_key
+
+LogLevel INFO
+SyslogFacility AUTH
+
+#AllowAgentForwarding yes
+# Feel free to re-enable these if your use case requires them.
+AllowTcpForwarding yes
+AllowStreamLocalForwarding yes
+GatewayPorts yes
+X11Forwarding no
+#X11DisplayOffset 10
+#X11UseLocalhost yes
+PermitTTY yes
+#PrintMotd yes
+#PrintLastLog yes
+#TCPKeepAlive yes
+#PermitUserEnvironment no
+#Compression delayed
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+#UseDNS no
+#PidFile /run/sshd.pid
+#MaxStartups 10:30:100
+PermitTunnel yes
+#ChrootDirectory none
+#VersionAddendum none
+
+# override default of no subsystems
+Subsystem	sftp	/usr/lib/ssh/sftp-server
+
+# Example of overriding settings on a per-user basis
+#Match User anoncvs
+#	X11Forwarding no
+#	AllowTcpForwarding no
+#	PermitTTY no
+#	ForceCommand cvs server
