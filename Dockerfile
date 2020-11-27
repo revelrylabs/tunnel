@@ -6,16 +6,14 @@ arg github_token
 run apk update && apk upgrade
 run apk add openssh nginx curl sed jq
 
-#add nginx.conf /etc/nginx/nginx.conf
 add fetch_keys.sh .
 run sh fetch_keys.sh ${github_token}
 
 workdir /etc/ssh
 run ssh-keygen -A
-add sshd_config .
-
-add motd /etc/motd
 
 expose 22
+
+copy /root /
 
 cmd ["/usr/sbin/sshd","-D"]
