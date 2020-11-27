@@ -16,6 +16,9 @@ copy /root /
 
 run nginx
 
+run mkdir /tunnel
+run chmod 777 /tunnel
+
 expose 80 22
 
 cmd ["sh", "/root/run_servers.sh"]

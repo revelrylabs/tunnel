@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Remove old sockets
+find /tunnel -type s | xargs -I {} sh -c 'socat -u OPEN:/dev/null UNIX:{} || rm {}'
