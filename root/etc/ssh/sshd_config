@@ -12,35 +12,12 @@ AuthorizedKeysFile	.ssh/authorized_keys
 LogLevel INFO
 SyslogFacility AUTH
 
-#AllowAgentForwarding yes
-# Feel free to re-enable these if your use case requires them.
+PermitTunnel yes
 AllowTcpForwarding yes
 AllowStreamLocalForwarding yes
 GatewayPorts yes
-X11Forwarding no
-#X11DisplayOffset 10
-#X11UseLocalhost yes
-PermitTTY yes
-#PrintMotd yes
-#PrintLastLog yes
-#TCPKeepAlive yes
-#PermitUserEnvironment no
-#Compression delayed
-#ClientAliveInterval 0
-#ClientAliveCountMax 3
-#UseDNS no
-#PidFile /run/sshd.pid
-#MaxStartups 10:30:100
-PermitTunnel yes
-#ChrootDirectory none
-#VersionAddendum none
+PermitTTY no
+PrintMotd yes
 
-# override default of no subsystems
-Subsystem	sftp	/usr/lib/ssh/sftp-server
-
-# Example of overriding settings on a per-user basis
-#Match User anoncvs
-#	X11Forwarding no
-#	AllowTcpForwarding no
-#	PermitTTY no
-#	ForceCommand cvs server
+StreamLocalBindUnlink yes
+StreamLocalBindMask 0111

@@ -1,5 +1,5 @@
 # Run with:
-# docker run -p 4321:22 tunnel
+# docker run --rm -p 8080:80 -p 4321:22 tunnel
 from alpine:3.12
 arg github_token
 
@@ -12,8 +12,10 @@ run sh fetch_keys.sh ${github_token}
 workdir /etc/ssh
 run ssh-keygen -A
 
-expose 22
-
 copy /root /
 
-cmd ["/usr/sbin/sshd","-D"]
+run nginx
+
+expose 80 22
+
+cmd ["sh", "/root/run_servers.sh"]
