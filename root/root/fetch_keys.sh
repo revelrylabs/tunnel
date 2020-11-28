@@ -1,7 +1,12 @@
 #!/bin/sh
 
-GITHUB_KEY=$1 #$COPILOT_GITHUB_TOKEN
-GITHUB_ORG=revelrylabs
+GITHUB_KEY="${1:-$GITHUB_KEY}"
+GITHUB_ORG="${2:-$GITHUB_ORG}"
+
+if [[ -z "$GITHUB_KEY" || -z "$GITHUB_ORG" ]]; then
+  echo "GITHUB_KEY and GITHUB_ORG must be set"
+  exit 1
+fi
 
 curl -H "Authorization: Bearer $GITHUB_KEY" \
      -H "Accept: application/vnd.github.v3+json" \
