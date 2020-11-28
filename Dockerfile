@@ -4,7 +4,7 @@ from alpine:3.12
 arg github_token
 
 run apk update && apk upgrade
-run apk add openssh nginx curl sed jq
+run apk add openssh nginx curl sed jq socat
 
 add fetch_keys.sh .
 run sh fetch_keys.sh ${github_token}

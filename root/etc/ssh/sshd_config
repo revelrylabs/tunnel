@@ -16,7 +16,6 @@ PermitTunnel yes
 AllowTcpForwarding yes
 AllowStreamLocalForwarding yes
 GatewayPorts yes
-PermitTTY no
 PrintMotd yes
 
 StreamLocalBindUnlink yes
