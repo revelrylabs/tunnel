@@ -6,7 +6,7 @@ arg github_org
 arg host_keys
 
 run apk update && apk upgrade
-run apk add openssh nginx curl sed jq socat
+run apk add openssh nginx curl sed jq socat logrotate
 
 # This is done on build basically to save time during development
 add root/root/fetch_keys.sh /root
@@ -23,5 +23,7 @@ run mkdir /tunnel
 run chmod 777 /tunnel
 
 expose 80 22
+
+workdir /root
 
 cmd ["sh", "/root/boot.sh"]
