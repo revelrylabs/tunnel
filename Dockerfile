@@ -17,8 +17,6 @@ run echo $host_keys | base64 -d | zcat | tar x
 
 copy /root /
 
-run nginx
-
 run mkdir /tunnel
 run chmod 777 /tunnel
 
