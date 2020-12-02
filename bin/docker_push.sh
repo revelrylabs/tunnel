@@ -9,7 +9,6 @@ LATEST_TAG=$IMAGE_TAG:$TRAVIS_BRANCH-latest
 VERSIONED_TAG=$IMAGE_TAG:$TRAVIS_BRANCH-$HEAD_SHA
 
 docker pull $LATEST_TAG || true
-docker build --cache-from $LATEST_TAG -t $VERSIONED_TAG . || exit 1
 
 docker build --cache-from $LATEST_TAG \
   --tag $VERSIONED_TAG \
