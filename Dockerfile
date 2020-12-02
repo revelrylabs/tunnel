@@ -15,12 +15,9 @@ run sh /root/fetch_keys.sh ${github_token} ${github_org}
 workdir /etc/ssh
 run echo $host_keys | base64 -d | zcat | tar x
 
-copy /root /
-
-run mkdir /tunnel
-run chmod 777 /tunnel
-
 expose 80 22
+
+copy /root /
 
 workdir /root
 

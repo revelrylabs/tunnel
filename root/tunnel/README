@@ -1,0 +1,1 @@
+This directory is used to hold unix socket files when users connect to the tunnel. Dead sockets are periodically cleared out via a cron job described in /etc/periodic/15min/cleanup_sockets
